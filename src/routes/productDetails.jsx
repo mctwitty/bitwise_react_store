@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import { CartContext } from '../contexts/CartContext';
 import { Button } from 'react-bootstrap';
 
-import { useLoaderData } from 'react-router-dom';
 
 export const loader = async ({params}) => {
   const { productId } = params
@@ -10,16 +11,17 @@ export const loader = async ({params}) => {
   return { product }
 }
 
-
 function ProductDetails() {
   const [quantity, setQuantity] = useState(1)
   const { product } = useLoaderData()
   const { id, title, description, image, price } = product
-  console.log(quantity)
+  const { addToCart } = useContext(CartContext)
+
   const handleSubmit = (e) => {
     e.preventDefault()
     // insert cart functionality
-    console.log("Quantity", quantity)
+    console.log("addToCart", {quantity, id, price, title})
+    addToCart({ quantity, id, price, title})
   }
   const handleQuantityChange = (e) => {
     const q = Math.max(1, e.target.value)

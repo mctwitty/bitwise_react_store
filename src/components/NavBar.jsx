@@ -13,7 +13,7 @@ function NavBar() {
         <NavLink to='/products'>Products</NavLink>
       </Nav.Item>
       <Nav.Item>
-        Cart
+        <NavLink to='/cart'>Cart</NavLink>
       </Nav.Item>
       <Nav.Item>
         <input type="search" />
