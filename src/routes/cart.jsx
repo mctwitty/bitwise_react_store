@@ -5,8 +5,9 @@ import CartItemCard from '../components/CartItemCard'
 import { CartContext } from '../contexts/CartContext'
 
 const Cart = () => {
-  const { cart } = useContext(CartContext)
+  const { cart, removeFromCart } = useContext(CartContext)
   const [total, setTotal] = useState(0)
+  
   useEffect(() => {
     let subtotal = 0
     cart.forEach(({quantity, price}) => subtotal += quantity * price)
@@ -24,6 +25,7 @@ const Cart = () => {
           quantity={item.quantity}
           price={item.price}
           id={item.id}
+          removeFromCart={removeFromCart}
         />
       ))}
       <h3>Total: {total}</h3>

@@ -23,20 +23,15 @@ const CartProvider = ({children}) => {
         quantity: cart[index].quantity + quantity
       }
     }
-    setCart(newCart)
+    setCart([...newCart])
     console.log(cart)
   }
   const removeFromCart = (id) => {
-    let newCart = cart
-    console.log('cart', cart)
-    console.log('newCart', newCart)
-    console.log('id', id)
-    const index = newCart.findIndex(item => id == item.id)
-    console.log('index', index)
+    const index = cart.findIndex(item => id == item.id)
     if(index != -1) {
-      newCart.splice(index, 1)
+      cart.splice(index, 1)
     }
-    setCart(newCart)
+    setCart([...cart])
     console.log(cart)
   }
   return ( 
