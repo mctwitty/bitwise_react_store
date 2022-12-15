@@ -17,7 +17,6 @@ const Cart = () => {
   return (
     <div>
       <h2>Cart</h2>
-      <p>**iterate through cart with delete button**</p>
       { cart?.map(item => (
         <CartItemCard
           key={item.id}

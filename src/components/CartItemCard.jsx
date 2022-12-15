@@ -12,7 +12,7 @@ const CartItemCard = ({id, title, price, quantity, removeFromCart}) => {
 
   return ( 
     <>
-      <p>Title: {title}</p>
+      <p>{title}</p>
       <p>Quantity: {quantity}</p>
       <p>Price: {price}</p>
       <p>Subtotal: {quantity * price}</p>
