@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 
 // Contexts
 import CartProvider from './contexts/CartContext';
@@ -12,7 +12,7 @@ import ProductDetails, { loader as productDetailLoader } from './routes/productD
 import Cart from './routes/cart'
 import CheckoutPage from './routes/checkout'; 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Root/>,
