@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 // Contexts
 import CartProvider from './contexts/CartContext';
@@ -10,16 +10,17 @@ import Root from './routes/root'
 import ProductList, { loader as productsLoader } from './routes/products';
 import ProductDetails, { loader as productDetailLoader } from './routes/productDetails';
 import Cart from './routes/cart'
+import CheckoutPage from './routes/checkout'; 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root/>,
-    // loader: rootLoader,
     errorElement: <div>whoopsie</div>,
     children: [
       {
         path: '/products',
+        index: true,
         element: <ProductList/>,
         loader: productsLoader,
       },
@@ -27,11 +28,16 @@ const router = createBrowserRouter([
         path: '/products/:productId',
         element: <ProductDetails/>,
         loader: productDetailLoader,
+        errorElement: <div>d'oh</div>
       },
       {
         path: '/cart',
         element: <Cart/>,
       },
+      {
+        path: '/checkout',
+        element: <CheckoutPage/>
+      }
     ]
   }
 ])

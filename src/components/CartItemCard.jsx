@@ -4,7 +4,6 @@
 import { Button } from 'react-bootstrap';
 
 const CartItemCard = ({id, title, price, quantity, removeFromCart}) => {
-  // const { removeFromCart } = useContext(CartContext)
   const handleClick = (e) => {
     console.log('removeFromCart', id)
     removeFromCart(id)
@@ -14,8 +13,8 @@ const CartItemCard = ({id, title, price, quantity, removeFromCart}) => {
     <>
       <p>{title}</p>
       <p>Quantity: {quantity}</p>
-      <p>Price: {price}</p>
-      <p>Subtotal: {quantity * price}</p>
+      <p>Price: ${price.toFixed(2)}</p>
+      <p>Subtotal: ${(quantity * price).toFixed(2)}</p>
       <Button variant='danger' onClick={handleClick}>remove</Button>
     </>
   )

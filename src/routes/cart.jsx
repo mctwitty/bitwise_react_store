@@ -1,22 +1,18 @@
 import { useContext, useEffect, useState } from 'react'
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import CartItemCard from '../components/CartItemCard'
 
 // Contexts
 import { CartContext } from '../contexts/CartContext'
 
 const Cart = () => {
-  const { cart, removeFromCart } = useContext(CartContext)
-  const [total, setTotal] = useState(0)
-  
-  useEffect(() => {
-    let subtotal = 0
-    cart.forEach(({quantity, price}) => subtotal += quantity * price)
-    setTotal(subtotal)
-  }, [cart])
+  const { cart, removeFromCart, cartTotal } = useContext(CartContext)
 
   return (
     <div>
-      <h2>Cart</h2>
+      <h3>Cart</h3>
+      { cart.length == 0 && <p>Your cart is empty. Don't you want to buy <Link to='/products'>something?</Link></p> }
       { cart?.map(item => (
         <CartItemCard
           key={item.id}
@@ -27,7 +23,8 @@ const Cart = () => {
           removeFromCart={removeFromCart}
         />
       ))}
-      <h3>Total: {total}</h3>
+      <h3>Total: ${cartTotal.toFixed(2)}</h3>
+      { cart.length > 0 && <Link to='/checkout'><Button variant='success'>Checkout</Button></Link>}
     </div>
   )
 

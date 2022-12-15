@@ -1,10 +1,17 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext(null)
 
 const CartProvider = ({children}) => {
 
   const [cart, setCart] = useState([])
+  const [cartTotal, setCartTotal] = useState(0)
+
+  useEffect(() => {
+    let subtotal = 0
+    cart.forEach(({quantity, price}) => subtotal += price * quantity)
+    setCartTotal(subtotal)
+  }, [cart])
 
   /**
    * @param {item} 
@@ -34,8 +41,15 @@ const CartProvider = ({children}) => {
     setCart([...cart])
     console.log(cart)
   }
+const checkout = (form) => {
+  console.log('Checkout Form: ', form)
+  console.log('Checkout Cart: ', cart)
+  setCart([])
+  console.log('Reset Cart: ', cart)
+}
+
   return ( 
-    <CartContext.Provider value={{cart, addToCart, removeFromCart}}>
+    <CartContext.Provider value={{cart, cartTotal, addToCart, removeFromCart, checkout}}>
       {children}
     </CartContext.Provider>
    );

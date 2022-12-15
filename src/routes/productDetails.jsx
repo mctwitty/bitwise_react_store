@@ -22,6 +22,7 @@ function ProductDetails() {
     // insert cart functionality
     console.log("addToCart", {quantity, id, price, title})
     addToCart({ quantity, id, price, title})
+    setQuantity(1)
   }
   const handleQuantityChange = (e) => {
     const q = Math.max(1, e.target.value)
@@ -31,7 +32,7 @@ function ProductDetails() {
   return ( 
     <>
       <h2>{title}</h2>
-      <img src={image} alt={title} />
+      <img src={image} alt={title} style={{ maxHeight: '50vh' }} />
       <p>{description}</p>
       <p>${price.toFixed(2)}</p>
       <form onSubmit={handleSubmit}>

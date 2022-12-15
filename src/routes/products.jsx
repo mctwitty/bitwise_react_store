@@ -1,10 +1,7 @@
-// import { CardGroup, Row } from 'react-bootstrap';
 import CardGroup from 'react-bootstrap/CardGroup'
 import { useLoaderData } from 'react-router-dom';
 
 import ProductCard from '../components/ProductCard';
-
-
 
 export const loader = async ({params}) => {
   const response = await fetch('https://fakestoreapi.com/products')
@@ -15,11 +12,10 @@ export const loader = async ({params}) => {
 
 function ProductList() {
   const { products, productId } = useLoaderData()
-  // console.log(productId)
+
   return ( 
     <div>
       <h2>Products</h2>
-      {/* <Row xs={1} md={4} className='g-4'> */}
       <CardGroup>
         { products?.map( product => (
           <ProductCard
