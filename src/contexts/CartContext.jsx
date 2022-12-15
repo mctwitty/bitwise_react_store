@@ -45,7 +45,6 @@ const checkout = (form) => {
   console.log('Checkout Form: ', form)
   console.log('Checkout Cart: ', cart)
   setCart([])
-  console.log('Reset Cart: ', cart)
 }
 
   return ( 

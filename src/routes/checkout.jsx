@@ -2,9 +2,10 @@ import { useContext, useState } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import CheckoutItem from '../components/CheckoutItem';
 
 function CheckoutPage() {
-  const { cartTotal, checkout } = useContext(CartContext)
+  const { cart, cartTotal, checkout } = useContext(CartContext)
   const navigate = useNavigate()
   const [form, setForm] = useState({
     name: '',
@@ -27,6 +28,15 @@ function CheckoutPage() {
   return ( 
     <>
       <h3>Checkout</h3>
+      <h4>Cart</h4>
+      { cart?.map(item => (
+        <CheckoutItem
+          key={item.id}
+          title={item.title}
+          quantity={item.quantity}
+          price={item.price}
+        />
+      ))}
       <h4>Total: ${cartTotal.toFixed(2)}</h4>
       <Form onSubmit={handleSubmit} name='checkoutForm'>
         <Form.Group>

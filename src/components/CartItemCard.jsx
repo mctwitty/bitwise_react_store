@@ -1,7 +1,4 @@
-// import { useContext } from 'react';
-// import { CartContext } from '../contexts/CartContext';
-
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 const CartItemCard = ({id, title, price, quantity, removeFromCart}) => {
   const handleClick = (e) => {
@@ -11,11 +8,14 @@ const CartItemCard = ({id, title, price, quantity, removeFromCart}) => {
 
   return ( 
     <>
-      <p>{title}</p>
+      <Card style={{ width: '60ch', padding: '1em' }}>
+        
+      <Card.Title>{title}</Card.Title>
       <p>Quantity: {quantity}</p>
-      <p>Price: ${price.toFixed(2)}</p>
-      <p>Subtotal: ${(quantity * price).toFixed(2)}</p>
+      {/* <p>Price: ${price.toFixed(2)}</p>
+      <p>Subtotal: ${(quantity * price).toFixed(2)}</p> */}
       <Button variant='danger' onClick={handleClick}>remove</Button>
+      </Card>
     </>
   )
 }
