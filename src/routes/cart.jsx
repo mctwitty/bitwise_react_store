@@ -23,7 +23,6 @@ const Cart = () => {
           removeFromCart={removeFromCart}
         />
       ))}
-      {/* <h3>Total: ${cartTotal.toFixed(2)}</h3> */}
       { cart.length > 0 && <Link to='/checkout'><Button variant='success'>Checkout</Button></Link>}
     </div>
   )

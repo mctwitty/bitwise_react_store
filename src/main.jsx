@@ -20,7 +20,7 @@ const router = createHashRouter([
     children: [
       {
         path: '/products',
-        index: true,
+        // index: true,
         element: <ProductList/>,
         loader: productsLoader,
       },
