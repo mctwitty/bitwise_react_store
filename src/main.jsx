@@ -11,6 +11,7 @@ import ProductList, { loader as productsLoader } from './routes/products';
 import ProductDetails, { loader as productDetailLoader } from './routes/productDetails';
 import Cart from './routes/cart'
 import CheckoutPage from './routes/checkout'; 
+import Home from './routes/home';
 
 const router = createHashRouter([
   {
@@ -19,8 +20,11 @@ const router = createHashRouter([
     errorElement: <div>whoopsie</div>,
     children: [
       {
+        index: true,
+        element: <Home />
+      },
+      {
         path: '/products',
-        // index: true,
         element: <ProductList/>,
         loader: productsLoader,
       },
